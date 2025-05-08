@@ -1,0 +1,16 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+
+    <div class="form-wrap">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h4>Реєстрація</h4>
+            {{ form.as_p }}
+            <button type="submit">Зареєструватись</button>
+        </form>
+    </div>
+
+{% endblock %}

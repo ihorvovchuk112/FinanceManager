@@ -1,0 +1,43 @@
+{% extends 'FinApp/layout.html' %}
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block title %}Аналітика{% endblock %}
+
+
+{% block content %}
+<h2>Аналітика витрат</h2>
+
+<div class="charts-container">
+  <canvas class="charts"></canvas>
+</div>
+
+<div class="grid-container">
+  <div class="grid-item">
+    <h4>Останні витрати</h4>
+    <ul>
+      {% for expense in recent_expenses %}
+        <li>{{ expense.datetime|date:"d.m.Y" }} – {{ expense.name }} – {{ expense.amount }} ₴</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="grid-item">
+    <h4>Цього місяця витрачено:</h4>
+    <p>{{ total_expenses }} ₴</p>
+
+    <h4>Найбільша витрата:</h4>
+    <p>{{ max_expense }} ₴</p>
+  </div>
+
+  <div class="grid-item">
+    <h4>Витрати по категоріях</h4>
+    <ul>
+      {% for item in expenses_by_category %}
+        <li>{{ item.category__name }}: {{ item.total }} ₴</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

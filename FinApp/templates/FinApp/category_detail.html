@@ -1,0 +1,43 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} {{ category.name }} {% endblock %}
+
+{% block content %}
+<div class="detail">
+    <h4>{{ category.name }}</h4><br>
+    <h5>{{category.description}}</h5>
+    <div>
+        <a href="{% url 'category_update' category.id %}" class="buton">Редагувати</a>
+        <a href="{% url 'category_delete' category.id %}" class="buton">Видалити</a>
+    </div>
+
+    <table>
+        <h4 class="exp">Витрати на цю категорію</h4>
+        <thead>
+            <th>Сума</th>
+            <th>Назва</th>
+            <th>Дата</th>
+            <th>Опис</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for el in expenses %}
+                <tr>
+                    <td style="background-color: #d9dfe2;">-{{ el.amount }}</td>
+                    <td>{{ el.name }}</td>
+                    <td>{{ el.datetime|date:"d.m.Y" }}</td>
+                    <td>{{ el.description }}</td>
+                    <td style="width: 75px;">
+                        {% load static %}
+                        <a href="{% url 'update_expense' el.id %}"><img src="{% static 'FinApp/images/edit.svg' %}" alt="123" width="20" height="20"></a>
+                        <a href="{% url 'delete_expense' el.id %}"><img src="{% static 'FinApp/images/delete.svg' %}" type="submit" alt="123" width="20" height="20"></a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6">Витрат ще немає.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

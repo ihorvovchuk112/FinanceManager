@@ -1,0 +1,21 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Нова Категорія {% endblock %}
+
+{% block content %}
+
+    <div class="form-wrap">
+        <form method="post">
+            {% csrf_token %}
+            <h4>Додавання/Зміна категорії</h4>
+            <label for="category">Назва категорії</label>
+            {{ form.name }}
+            <label for="description">Опис</label>
+            {{ form.description }}
+            <span>{{error}}</span>
+            <button type="submit">Додати категорію</button>
+        </form>
+    </div>
+    
+
+{% endblock %}

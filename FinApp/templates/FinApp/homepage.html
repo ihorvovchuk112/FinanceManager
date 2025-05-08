@@ -1,0 +1,38 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block content %}
+    <div class="home-grid-box">
+        <div class="box-1" style="border: none;">
+            <h2>Привіт, {{ user }}</h2>
+            <p>Сьогодні витрачено: {{ today_expenses }} ₴</p>
+            <a class="buton" href="{% url 'add_expense' %}">Додати витрату</a>
+            <a class="buton" href="{% url 'add_category' %}">Додати категорію</a>
+        </div>
+        <div class="box-2">
+            <h4>Найбільша витрата місяця:</h4>
+            <h4 style="color: #64879f">{{ max_expense }} ₴</h4>
+        </div>
+        <div class="box-3">
+            <h4>Останні витрати:</h4>
+            <table>
+                {% for e in recent_expenses %}
+                    <tr>
+                        <td style="background-color: #d9dfe2;">-{{ e.amount }} ₴</td>
+                        <td>{{ e.name }}</td>
+                        <td>{{ e.datetime|date:"d.m.Y" }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="box-4">
+            <h4>Витрати по категоріях</h4>
+    <ul>
+      {% for item in expenses_by_category %}
+        <li>{{ item.category__name }}: {{ item.total }} ₴</li>
+      {% endfor %}
+    </ul>
+        </div>
+    </div>
+{% endblock %}

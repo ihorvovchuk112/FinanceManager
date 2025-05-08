@@ -1,0 +1,17 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Видалення {% endblock %}
+
+{% block content %}
+
+    <div class="form-wrap">
+        <form method="post">
+            {% csrf_token %}
+            <h4>Видалити без можливості відновлення?</h4>
+            <button type="reset" style="color:#134B70; background-color: #EEEEEE;">Ні</button>
+            <button type="submit">Так</button>
+        </form>
+    </div>
+    
+
+{% endblock %}

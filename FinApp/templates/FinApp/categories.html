@@ -1,0 +1,32 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Категорії витрат {% endblock %}
+
+{% block content %}
+
+    <h4>Категорії витрат</h4>
+    <table>
+        <thead>
+            <th>Назва</th>
+            <th>Опис</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for el in categories_list %}
+                <tr>
+                    <td><a href="{% url 'category_detail' el.id %}">{{ el.name }}</a></td>
+                    <td>{{ el.description }}</td>
+                    <td style="width: 75px;">
+                        {% load static %}
+                        <a href="{% url 'category_update' el.id %}"><img src="{% static 'FinApp/images/edit.svg' %}" alt="123" width="20" height="20"></a>
+                        <a href="{% url 'category_delete' el.id %}"><img src="{% static 'FinApp/images/delete.svg' %}" type="submit" alt="123" width="20" height="20"></a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="3">Категорій ще немає.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class='buton' href="{% url 'add_category' %}">Додати категорію</a>
+
+{% endblock %}

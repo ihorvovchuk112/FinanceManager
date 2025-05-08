@@ -1,0 +1,50 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Додати/Змінити витрату {% endblock %}
+
+{% block content %}
+ 
+<form method="post">
+    {% csrf_token %}
+    <h4>Додати/Змінити витрату</h4>
+    <!-- {{ form.as_p }} -->
+    <!-- Сума -->
+    <div class="form-group">
+        {{ form.amount.label_tag }}
+        {{ form.amount }}
+        {{ form.amount.errors }}
+    </div>
+
+    <!-- Назва -->
+    <div class="form-group">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {{ form.name.errors }}
+    </div>
+
+    <!-- Категорія -->
+    <div class="ctg-box">
+        <!-- Категорія -->
+        <div class="ctg">
+          <label for="{{ form.category.id_for_label }}">Категорія:</label>
+          {{ form.category }}
+        </div>
+        
+        <!-- Нова категорія -->
+        <div class="ctg">
+          <label for="{{ form.new_category.id_for_label }}">Створити нову категорію:</label>
+          {{ form.new_category }}
+        </div>
+    </div>
+
+    <!-- Опис -->
+    <div class="form-group">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+        {{ form.description.errors }}
+    </div>
+    <button type="submit">Зберегти</button>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Головна {% endblock %}
+
+{% block content %}
+<div class="welcome-wrap">
+    <div class="welcome-container">
+        <h1>Ласкаво просимо до FinanceManager</h1>
+        <p>Втомилися втрачати контроль над витратами? Наш сервіс допоможе вам впорядкувати особисті фінанси.</p>
+    
+        <h2>Що ви можете робити з FinanceManager?</h2>
+        <ul>
+            <li>Додавати, редагувати та переглядати свої витрати</li>
+            <li>Створювати власні категорії витрат</li>
+            <li>Аналізувати витрати за останній час</li>
+            <li>Отримувати візуальну аналітику</li>
+        </ul>
+    
+        <div class="auth-call">
+        <p>Щоб скористатися всіма функціями, будь-ласка, <a href="{% url 'login' %}">увійдіть</a> або <a href="{% url 'registration' %}">зареєструйтесь</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

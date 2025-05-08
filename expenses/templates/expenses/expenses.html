@@ -1,0 +1,38 @@
+{% extends 'FinApp/layout.html' %}
+
+{% block title %} Витрати {% endblock %}
+
+{% block content %}
+
+<h4>Витрати</h4>
+    <table>
+        <thead>
+            <th>Сума</th>
+            <th>Назва</th>
+            <th>Категорія</th>
+            <th>Дата</th>
+            <th>Опис</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for el in expenses_list %}
+                <tr>
+                    <td style="background-color: #d9dfe2;">-{{ el.amount }}</td>
+                    <td>{{ el.name }}</td>
+                    <td>{{ el.category }}</td>
+                    <td>{{ el.datetime|date:"d.m.Y" }}</td>
+                    <td>{{ el.description }}</td>
+                    <td style="width: 75px;">
+                        {% load static %}
+                        <a href="{% url 'update_expense' el.id %}"><img src="{% static 'FinApp/images/edit.svg' %}" alt="123" width="20" height="20"></a>
+                        <a href="{% url 'delete_expense' el.id %}"><img src="{% static 'FinApp/images/delete.svg' %}" type="submit" alt="123" width="20" height="20"></a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6">Витрат ще немає.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class='buton' href="{% url 'add_expense' %}">Додати витрату</a>
+
+{% endblock %}
