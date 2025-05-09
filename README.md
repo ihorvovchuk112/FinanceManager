@@ -1,0 +1,15 @@
+Finance Manager
+created using Python Django
+![screenshot](Screenshots/2.png)
+![screenshot](Screenshots/1.png)
+![screenshot](Screenshots/3.png)
+![screenshot](Screenshots/4.png)
+![screenshot](Screenshots/5.png)
+![screenshot](Screenshots/6.png)
+![screenshot](Screenshots/7.png)
+![screenshot](Screenshots/8.png)
+![screenshot](Screenshots/9.png)
+![screenshot](Screenshots/10.png)
+![screenshot](Screenshots/11.png)
+![screenshot](Screenshots/12.png)
+![screenshot](Screenshots/13.png)
